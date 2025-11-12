@@ -11,13 +11,9 @@ from pathlib import Path
 from unittest.mock import Mock, patch
 import pandas as pd
 
-import sys
 from pathlib import Path
 
-sys.path.insert(0, str(Path(__file__).parent.parent))
-
-
-from extract_ros_dependencies import (
+from ros_dependency_parser import (
     ROSDependencyExtractor,
     RosdepWrapper,
     AptPackageUtils,

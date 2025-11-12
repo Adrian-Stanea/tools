@@ -36,11 +36,22 @@ source /opt/ros/humble/setup.sh
 
 ```bash
 # Clone the repository
-# git clone <repo_url>
+git clone <repo_url>
 cd ros-dependency-parser
 
-# Install dependencies
-pip install -r requirements.txt
+# Install Package
+pip install .
+```
+
+You can install the pacakge in editable mode to allow for easy modifications and testing while developing:
+
+```bash
+pip install -e .
+```
+
+You can install the package from Github URL using:
+```bash
+pip install "git+https://github.com/Adrian-Stanea/tools.git@main#subdirectory=ros-dependency-parser"
 ```
 
 ## Usage
@@ -50,7 +61,7 @@ pip install -r requirements.txt
 Extract dependencies from a package.xml file:
 
 ```bash
-./extract_ros_dependencies.py --package-xml-path </absolute/path/to/package.xml>
+ros-dependency-parser --package-xml-path </absolute/path/to/package.xml>
 ```
 
 ### Export to Excel
@@ -58,7 +69,7 @@ Extract dependencies from a package.xml file:
 Export results to Excel files:
 
 ```bash
-./extract_ros_dependencies.py \
+ros-dependency-parser \
     --package-xml-path </absolute/path/to/package.xml> \
     --export
 ```
@@ -68,7 +79,7 @@ Export results to Excel files:
 Scan transitive dependencies (up to 2 levels deep):
 
 ```bash
-./extract_ros_dependencies.py \
+ros-dependency-parser \
     --package-xml-path </absolute/path/to/package.xml> \
     --transitive-depth 2 \
     --export
@@ -77,7 +88,7 @@ Scan transitive dependencies (up to 2 levels deep):
 Scan all transitive dependencies (unlimited depth):
 
 ```bash
-./extract_ros_dependencies.py \
+ros-dependency-parser \
     --package-xml-path </absolute/path/to/package.xml> \
     --transitive-depth -1 \
     --export
@@ -88,7 +99,7 @@ Scan all transitive dependencies (unlimited depth):
 Exclude specific dependency tags:
 
 ```bash
-./extract_ros_dependencies.py \
+ros-dependency-parser \
     --package-xml-path </absolute/path/to/package.xml> \
     --exclude-dependency-tags doc_depend test_depend \
     --export
@@ -99,7 +110,7 @@ Exclude specific dependency tags:
 Enable debug logging:
 
 ```bash
-./extract_ros_dependencies.py \
+ros-dependency-parser \
     --package-xml-path </absolute/path/to/package.xml> \
     --verbose
 ```
@@ -107,7 +118,7 @@ Enable debug logging:
 ### Get Help
 
 ```bash
-./extract_ros_dependencies.py --help
+ros-dependency-parser --help
 ```
 
 ## Output

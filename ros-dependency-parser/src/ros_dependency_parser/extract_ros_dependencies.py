@@ -1,4 +1,3 @@
-#!/usr/bin/env python3
 """
 Extract apt package dependencies and their versions for a ROS package.xml file.
 
