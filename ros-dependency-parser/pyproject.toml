@@ -1,0 +1,64 @@
+# https://packaging.python.org/en/latest/guides/writing-pyproject-toml/#about-your-project
+[build-system]
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"
+
+
+[project]
+name = "ros-dependency-parser"
+version = "0.0.0"
+authors = [
+  { name="Adrian Stanea", email="Adrian.Stanea@analog.com" },
+]
+description = "A tool to parse ROS2 package dependencies, versions, and licenses in Ubuntu environments."
+readme = "README.md"
+requires-python = ">=3.10"
+keywords = ["ros", "ros2", "dependencies", "parser", "apt"]
+# license = "MIT"
+# license-files = ["LICEN[CS]E*"]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Operating System :: POSIX :: Linux",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+]
+# Runtime dependencies
+dependencies = [
+  "pandas>=2.3.3,<3.0.0",
+  "openpyxl>=3.1.5,<4.0.0",
+]
+
+
+[project.optional-dependencies]
+dev = [
+    "black>=23.0.0",
+    "flake8>=6.0.0",
+    "mypy>=1.0.0",
+    "pylint>=3.0.0",
+]
+all = [
+    "ros-dependency-parser[dev]",
+]
+
+[project.scripts]
+ros-dependency-parser = "ros_dependency_parser.extract_ros_dependencies:main"
+
+
+[project.urls]
+Homepage = "https://github.com/Adrian-Stanea/tools/ros-dependency-parser"
+Issues = "https://github.com/Adrian-Stanea/tools/issues"
+Repository = "https://github.com/Adrian-Stanea/tools.git"
+Documentation = "https://github.com/Adrian-Stanea/tools/ros-dependency-parser/README.md"
+
+
+[tool.setuptools.packages.find]
+where = ["src"]
+include = ["ros_dependency_parser"]
+exclude = ["tests*"]
+
+
+[tool.setuptools]
+include-package-data = true
